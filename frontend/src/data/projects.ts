@@ -53,6 +53,63 @@ export const projects: Project[] = [
     accent: "purple",
     icon: "calendar",
     preview: "agenda",
+    technologies: [
+      "Next.js",
+      "React",
+      "NestJS",
+      "TypeScript",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+      "BullMQ",
+      "Tailwind CSS",
+    ],
+    integrations: [
+      "WhatsApp",
+      "Google Calendar",
+      "Google Meet",
+      "Stripe",
+      "Webhooks",
+    ],
+    ai: {
+      product: {
+        used: true,
+        summary:
+          "A inteligência artificial interpreta intenções e entidades das conversas, apoiando a condução do atendimento enquanto as regras críticas permanecem validadas pelo domínio da aplicação.",
+        applications: [
+          "Interpretação de intenção",
+          "Extração de entidades",
+          "Geração de respostas naturais quando permitido",
+          "Apoio à condução do workflow conversacional",
+          "Reconhecimento de contexto e follow-ups",
+        ],
+      },
+    },
+    links: {
+      website: "https://minhaagendazap.com",
+    },
+    caseStudy: {
+      problem:
+        "Empresas e profissionais precisam lidar com conversas de clientes, disponibilidade, marcações, alterações, lembretes e organização operacional distribuídas entre diferentes ferramentas e atividades manuais.",
+      solution:
+        "O Minha Agenda Zap transforma conversas do WhatsApp em fluxos estruturados de atendimento e agenda. A plataforma cobre agendamento, consulta de disponibilidade, confirmação, cancelamento, reagendamento, recorrência, lembretes e follow-ups nos contextos BUSINESS e PERSONAL, com sincronização com Google Calendar e Google Meet condicional por serviço.",
+      architecture:
+        "Monólito modular orientado a eventos, com backend NestJS, isolamento multi-tenant por account_id, PostgreSQL/Prisma como fonte de verdade, Redis/BullMQ para processamento assíncrono e adapters desacoplados para WhatsApp, IA, Google e billing. A organização em domain, application e infrastructure, com EventBus e filas, preserva baixo acoplamento e concentra as regras críticas no domínio.",
+      highlights: [
+        "Atendimento e agendamento via WhatsApp",
+        "Contextos BUSINESS e PERSONAL isolados",
+        "Arquitetura multi-tenant",
+        "Sincronização com Google Calendar",
+        "Workflows conversacionais com processamento assíncrono",
+        "IA desacoplada das regras críticas de negócio",
+        "Billing integrado ao Stripe",
+      ],
+    },
+    seo: {
+      title: "Minha Agenda Zap | Agendamento e Automação via WhatsApp",
+      description:
+        "Plataforma de agendamento e automação via WhatsApp, com inteligência artificial e sincronização com Google Calendar para organizar atendimento e agenda.",
+    },
   },
   {
     id: "clicanosite",
