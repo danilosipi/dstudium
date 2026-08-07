@@ -32,11 +32,37 @@ export type Pillar = {
   icon: PillarIcon;
 };
 
+export type SolutionAccent =
+  | "blue"
+  | "cyan"
+  | "purple"
+  | "deep"
+  | "green"
+  | "orange";
+
+export type SolutionVisual =
+  | "saas"
+  | "web"
+  | "automation"
+  | "integration"
+  | "ai"
+  | "consulting";
+
+export type SolutionIcon =
+  | "saas"
+  | "web"
+  | "automation"
+  | "integration"
+  | "ai"
+  | "consulting";
+
 export type Solution = {
   id: string;
   title: string;
   description: string;
-  icon: "saas" | "web" | "automation" | "integration" | "ai" | "consulting";
+  icon: SolutionIcon;
+  accent: SolutionAccent;
+  visual: SolutionVisual;
 };
 
 export type ProcessStep = {
