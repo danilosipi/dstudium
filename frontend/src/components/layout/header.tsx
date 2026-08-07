@@ -74,8 +74,8 @@ export function Header() {
   const closeMenu = () => setOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-bg-primary/90 backdrop-blur-md">
-      <Container className="grid h-[72px] grid-cols-[1fr_auto] items-center gap-4 lg:grid-cols-[1fr_auto_1fr]">
+    <header className="sticky top-0 z-50 border-b border-border/40 bg-bg-primary/90 backdrop-blur-md">
+      <Container className="grid h-[68px] grid-cols-[1fr_auto] items-center gap-3 sm:h-[76px] lg:grid-cols-[1fr_auto_1fr] lg:gap-4">
         <Link
           href="#inicio"
           className="justify-self-start rounded-md"
@@ -84,11 +84,11 @@ export function Header() {
             closeMenu();
           }}
         >
-          <Brand showTagline />
+          <Brand size="header" priority />
         </Link>
 
         <nav
-          className="hidden items-center justify-center gap-1 lg:flex"
+          className="hidden items-center justify-center gap-0.5 lg:flex"
           aria-label="Principal"
         >
           {mainNav.map((item) => {
@@ -99,7 +99,7 @@ export function Header() {
                 href={item.href}
                 aria-current={isActive ? "true" : undefined}
                 onClick={() => setActive(item.href)}
-                className={`relative px-3 py-2 text-sm transition-colors ${
+                className={`relative px-2.5 py-2 text-sm transition-colors ${
                   isActive
                     ? "text-text-primary"
                     : "text-text-secondary hover:text-text-primary"
@@ -107,7 +107,7 @@ export function Header() {
               >
                 {item.label}
                 <span
-                  className={`absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-blue-primary transition-opacity ${
+                  className={`absolute inset-x-2.5 -bottom-0.5 h-px rounded-full bg-blue-primary transition-opacity ${
                     isActive ? "opacity-100" : "opacity-0"
                   }`}
                   aria-hidden
@@ -118,7 +118,12 @@ export function Header() {
         </nav>
 
         <div className="hidden justify-self-end lg:block">
-          <ButtonLink href="#contato" variant="primary" onClick={closeMenu}>
+          <ButtonLink
+            href="#contato"
+            variant="primary"
+            className="px-4 py-2.5 text-[10px] tracking-[0.1em]"
+            onClick={closeMenu}
+          >
             Fale com a DSTUDIUM
           </ButtonLink>
         </div>

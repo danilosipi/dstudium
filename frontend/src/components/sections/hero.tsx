@@ -1,4 +1,4 @@
-import { DNucleusHero } from "@/components/brand/d-nucleus-hero";
+import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/layout/container";
 
@@ -6,17 +6,44 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative overflow-hidden border-b border-border/50"
+      className="relative h-[700px] overflow-hidden border-b border-border/50 md:h-[640px] lg:h-[660px]"
       aria-labelledby="hero-heading"
     >
-      <div className="pointer-events-none absolute inset-0 tech-grid opacity-30" aria-hidden />
-      <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="absolute -left-20 top-0 h-80 w-80 rounded-full bg-blue-primary/20 blur-3xl" />
-        <div className="absolute right-0 top-10 h-96 w-96 rounded-full bg-glow/10 blur-3xl" />
+      {/* Desktop: full-bleed | Mobile: arte menor, inferior direita */}
+      <div
+        className="pointer-events-none absolute inset-0 max-md:inset-auto max-md:right-0 max-md:bottom-0 max-md:h-[260px] max-md:w-[520px] max-md:opacity-55"
+        aria-hidden
+      >
+        <Image
+          src="/brand/dstudium-hero-wide.png"
+          alt=""
+          fill
+          priority
+          className="object-cover object-center max-md:object-contain max-md:object-bottom-right"
+          sizes="(max-width: 767px) 520px, 100vw"
+        />
       </div>
 
-      <Container className="relative grid items-center gap-10 py-14 lg:grid-cols-2 lg:gap-12 lg:py-16">
-        <div className="max-w-xl">
+      {/* Overlay desktop — horizontal para leitura */}
+      <div
+        className="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(90deg,#050816_0%,rgba(5,8,22,0.98)_26%,rgba(5,8,22,0.78)_43%,rgba(5,8,22,0.28)_62%,rgba(5,8,22,0.06)_100%)] md:block"
+        aria-hidden
+      />
+
+      {/* Overlay mobile — forte na área do texto */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#050816_0%,rgba(5,8,22,0.98)_44%,rgba(5,8,22,0.88)_56%,rgba(5,8,22,0.5)_70%,rgba(5,8,22,0.2)_82%,transparent_100%)] md:hidden"
+        aria-hidden
+      />
+
+      {/* Fade leve na base */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#050816]/60 to-transparent"
+        aria-hidden
+      />
+
+      <Container className="relative z-10 flex h-full items-start pt-10 md:items-center md:pt-0">
+        <div className="max-w-[540px] lg:max-w-[560px]">
           <p className="inline-flex rounded-full border border-border bg-surface/70 px-3 py-1.5 text-[10px] font-semibold tracking-[0.18em] text-blue-accent uppercase">
             Tecnologia · Automação · IA · Escala
           </p>
@@ -45,8 +72,6 @@ export function Hero() {
             </ButtonLink>
           </div>
         </div>
-
-        <DNucleusHero className="lg:justify-self-end" />
       </Container>
     </section>
   );

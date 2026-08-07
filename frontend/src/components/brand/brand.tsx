@@ -1,29 +1,65 @@
-import { BrandMark } from "@/components/brand/brand-mark";
+import Image from "next/image";
+
+const LOGO_SRC = "/brand/dstudium-logo.png";
+const LOGO_ALT = "DSTUDIUM — Tecnologia que transforma";
+
+/**
+ * PNG 1536×1024 com padding preto generoso (~25% laterais, ~40% verticais).
+ * Escala amplia o conteúdo útil; overflow do container recorta o vazio.
+ * object-contain (nunca object-cover) para não cortar símbolo/tagline.
+ */
+const LOGO_SCALE = {
+  header: 2.05,
+  footer: 1.75,
+} as const;
+
+const sizeStyles = {
+  header: {
+    className:
+      "h-[48px] w-[200px] sm:h-[52px] sm:w-[224px] lg:h-[56px] lg:w-[236px]",
+  },
+  footer: {
+    className: "h-8 w-[136px] sm:h-9 sm:w-[152px]",
+  },
+} as const;
 
 type BrandProps = {
   className?: string;
-  showTagline?: boolean;
-  markSize?: number;
+  size?: keyof typeof sizeStyles;
+  priority?: boolean;
 };
 
 export function Brand({
   className = "",
-  showTagline = false,
-  markSize = 34,
+  size = "header",
+  priority = false,
 }: BrandProps) {
+  const { className: sizeClassName } = sizeStyles[size];
+
   return (
-    <span className={`inline-flex items-center gap-3 ${className}`}>
-      <BrandMark size={markSize} />
-      <span className="flex flex-col leading-none">
-        <span className="text-[15px] font-semibold tracking-[0.14em] text-text-primary">
-          DSTUDIUM
-        </span>
-        {showTagline ? (
-          <span className="mt-1.5 text-[10px] font-medium tracking-[0.16em] text-text-secondary uppercase">
-            Tecnologia · Automação · IA
-          </span>
-        ) : null}
-      </span>
+    <span
+      className={`relative inline-block overflow-hidden ${sizeClassName} ${className}`}
+    >
+      <Image
+        src={LOGO_SRC}
+        alt={LOGO_ALT}
+        width={1536}
+        height={1024}
+        priority={priority}
+        className={`pointer-events-none absolute left-1/2 top-1/2 h-auto w-full max-w-none object-contain ${
+          size === "header"
+            ? "brightness-[1.55] contrast-[1.22] saturate-[1.05] drop-shadow-[0_0_1px_rgba(180,200,255,0.55)]"
+            : "opacity-90"
+        }`}
+        style={{
+          transform: `translate(-50%, -50%) scale(${LOGO_SCALE[size]})`,
+        }}
+        sizes={
+          size === "header"
+            ? "(max-width: 640px) 400px, 480px"
+            : "(max-width: 640px) 280px, 320px"
+        }
+      />
     </span>
   );
 }
