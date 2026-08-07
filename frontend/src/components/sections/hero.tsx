@@ -6,39 +6,34 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative h-[700px] overflow-hidden border-b border-border/50 md:h-[640px] lg:h-[660px]"
+      className="relative h-[820px] overflow-hidden border-b border-border/50 md:h-[640px] lg:h-[660px]"
       aria-labelledby="hero-heading"
     >
-      {/* Desktop: full-bleed | Mobile: arte menor, inferior direita */}
-      <div
-        className="pointer-events-none absolute inset-0 max-md:inset-auto max-md:right-0 max-md:bottom-0 max-md:h-[260px] max-md:w-[520px] max-md:opacity-55"
+      <Image
+        src="/brand/dstudium-hero-wide.png"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-[68%_center] md:object-center"
         aria-hidden
-      >
-        <Image
-          src="/brand/dstudium-hero-wide.png"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center max-md:object-contain max-md:object-bottom-right"
-          sizes="(max-width: 767px) 520px, 100vw"
-        />
-      </div>
+      />
 
-      {/* Overlay desktop — horizontal para leitura */}
+      {/* Overlay desktop — horizontal aprovado */}
       <div
         className="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(90deg,#050816_0%,rgba(5,8,22,0.98)_26%,rgba(5,8,22,0.78)_43%,rgba(5,8,22,0.28)_62%,rgba(5,8,22,0.06)_100%)] md:block"
         aria-hidden
       />
 
-      {/* Overlay mobile — forte na área do texto */}
+      {/* Overlay mobile — horizontal + vertical fortes */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#050816_0%,rgba(5,8,22,0.98)_44%,rgba(5,8,22,0.88)_56%,rgba(5,8,22,0.5)_70%,rgba(5,8,22,0.2)_82%,transparent_100%)] md:hidden"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#050816_0%,rgba(5,8,22,0.96)_28%,rgba(5,8,22,0.78)_48%,rgba(5,8,22,0.4)_68%,rgba(5,8,22,0.12)_100%),linear-gradient(180deg,rgba(5,8,22,0.72)_0%,rgba(5,8,22,0.35)_28%,transparent_52%,rgba(5,8,22,0.25)_78%,rgba(5,8,22,0.7)_100%)] md:hidden"
         aria-hidden
       />
 
-      {/* Fade leve na base */}
+      {/* Fade leve na base (desktop) */}
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#050816]/60 to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-24 bg-gradient-to-t from-[#050816]/60 to-transparent md:block"
         aria-hidden
       />
 
