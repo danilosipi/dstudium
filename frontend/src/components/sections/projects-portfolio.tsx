@@ -69,7 +69,7 @@ export function ProjectsPortfolio() {
 
           <div className="grid grid-cols-1 items-stretch gap-3.5 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} cta="soon" />
+              <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         </Container>

@@ -47,11 +47,11 @@ const iconMap: Record<
   chart: IconChart,
 };
 
-export type ProjectCardCta = "link" | "soon" | "none";
+export type ProjectCardCta = "link" | "none";
 
 type ProjectCardProps = {
   project: Project;
-  /** Default `"link"` preserva o comportamento da home. */
+  /** Default `"link"` aponta para `/projetos/[slug]`. */
   cta?: ProjectCardCta;
 };
 
@@ -60,6 +60,7 @@ export function ProjectCard({ project, cta = "link" }: ProjectCardProps) {
   const Icon = iconMap[project.icon];
   const categoryLabel = getProjectCategoryLabel(project.category);
   const statusLabel = getProjectStatusLabel(project.status);
+  const href = `/projetos/${project.slug}`;
 
   return (
     <article
@@ -103,18 +104,12 @@ export function ProjectCard({ project, cta = "link" }: ProjectCardProps) {
 
             {cta === "link" ? (
               <Link
-                href="#projetos"
+                href={href}
                 className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#24315F] text-text-secondary transition-colors group-hover:border-blue-accent group-hover:text-blue-accent focus-visible:outline-offset-2"
                 aria-label={`Ver projeto ${project.name}`}
               >
                 <IconArrowRight className="h-3.5 w-3.5" />
               </Link>
-            ) : null}
-
-            {cta === "soon" ? (
-              <span className="shrink-0 text-[10px] font-medium tracking-wide text-text-secondary/70">
-                Case completo em breve
-              </span>
             ) : null}
           </div>
         </div>
