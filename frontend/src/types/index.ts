@@ -3,14 +3,22 @@ export type NavItem = {
   href: string;
 };
 
+export type ProjectAccent = "purple" | "blue" | "orange";
+export type ProjectIcon = "calendar" | "link" | "chart";
+export type ProjectPreview = "agenda" | "links" | "metrics";
+export type ProjectStatus = "Ativo";
+export type ProjectCategory = "SaaS";
+
 export type FeaturedProject = {
   id: string;
   name: string;
   subtitle: string;
   description: string;
-  tag: string;
-  status: string;
-  accent: "purple" | "blue" | "orange";
+  tag: ProjectCategory;
+  status: ProjectStatus;
+  accent: ProjectAccent;
+  icon: ProjectIcon;
+  preview: ProjectPreview;
 };
 
 export type Pillar = {

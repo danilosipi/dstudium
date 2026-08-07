@@ -10,6 +10,8 @@ export const featuredProjects: FeaturedProject[] = [
     tag: "SaaS",
     status: "Ativo",
     accent: "purple",
+    icon: "calendar",
+    preview: "agenda",
   },
   {
     id: "clicanosite",
@@ -20,6 +22,8 @@ export const featuredProjects: FeaturedProject[] = [
     tag: "SaaS",
     status: "Ativo",
     accent: "blue",
+    icon: "link",
+    preview: "links",
   },
   {
     id: "map",
@@ -30,5 +34,7 @@ export const featuredProjects: FeaturedProject[] = [
     tag: "SaaS",
     status: "Ativo",
     accent: "orange",
+    icon: "chart",
+    preview: "metrics",
   },
 ];
