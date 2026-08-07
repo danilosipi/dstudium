@@ -21,12 +21,15 @@ export type FeaturedProject = {
   preview: ProjectPreview;
 };
 
+export type PillarAccent = "purple" | "blue" | "green" | "orange";
+export type PillarIcon = "automation" | "tech" | "ai" | "scale";
+
 export type Pillar = {
   id: string;
   title: string;
   description: string;
-  accent: "cyan" | "blue" | "violet" | "orange";
-  icon: "automation" | "tech" | "ai" | "scale";
+  accent: PillarAccent;
+  icon: PillarIcon;
 };
 
 export type Solution = {

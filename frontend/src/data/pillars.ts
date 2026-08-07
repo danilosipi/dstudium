@@ -6,7 +6,7 @@ export const pillars: Pillar[] = [
     title: "Automação",
     description:
       "Processos inteligentes que reduzem tarefas manuais e aumentam a eficiência.",
-    accent: "cyan",
+    accent: "purple",
     icon: "automation",
   },
   {
@@ -22,7 +22,7 @@ export const pillars: Pillar[] = [
     title: "Inteligência Artificial",
     description:
       "IA aplicada para gerar insights, prever cenários e automatizar decisões.",
-    accent: "violet",
+    accent: "green",
     icon: "ai",
   },
   {

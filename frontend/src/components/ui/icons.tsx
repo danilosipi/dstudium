@@ -10,13 +10,30 @@ export function IconAutomation({ className = "" }: IconProps) {
   );
 }
 
+export function IconGear({ className = "" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <circle cx="12" cy="12" r="3.1" stroke="currentColor" strokeWidth="1.7" />
+      <path
+        d="M12 2.8v2.4M12 18.8v2.4M2.8 12h2.4M18.8 12h2.4M5.05 5.05l1.7 1.7M17.25 17.25l1.7 1.7M18.95 5.05l-1.7 1.7M6.75 17.25l-1.7 1.7"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export function IconTech({ className = "" }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-      <rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.7" />
-      <rect x="13" y="4" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.7" />
-      <rect x="4" y="13" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.7" />
-      <rect x="13" y="13" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.7" />
+      <path
+        d="M8 8 4.5 12 8 16M16 8l3.5 4L16 16M13.2 6.5 10.8 17.5"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -30,10 +47,34 @@ export function IconAi({ className = "" }: IconProps) {
   );
 }
 
+export function IconNeural({ className = "" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <circle cx="6" cy="7" r="2.2" stroke="currentColor" strokeWidth="1.6" />
+      <circle cx="18" cy="7" r="2.2" stroke="currentColor" strokeWidth="1.6" />
+      <circle cx="12" cy="12" r="2.4" stroke="currentColor" strokeWidth="1.6" />
+      <circle cx="7" cy="18" r="2.2" stroke="currentColor" strokeWidth="1.6" />
+      <circle cx="17" cy="18" r="2.2" stroke="currentColor" strokeWidth="1.6" />
+      <path
+        d="M7.8 8.4 10.4 10.6M16.2 8.4 13.6 10.6M12 14.4v1.4M9.2 16.4l1.4-2.2M14.8 16.4l-1.4-2.2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
 export function IconScale({ className = "" }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
-      <path d="M4 18V6M4 18h16M8 14v4M12 10v8M16 7v11" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+      <path
+        d="M12 3.2 7.2 13.2h3.1V20h3.4v-6.8h3.1L12 3.2Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+      <path d="M8.2 20.5h7.6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
     </svg>
   );
 }
