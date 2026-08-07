@@ -47,10 +47,13 @@ export type ProcessStep = {
   icon: "diagnosis" | "architecture" | "development" | "automation" | "evolution";
 };
 
+export type AboutIcon = "chart" | "consulting" | "gear";
+
 export type AboutDifferential = {
   id: string;
   title: string;
   description: string;
+  icon: AboutIcon;
 };
 
 export type FooterLink = {

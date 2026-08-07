@@ -13,15 +13,18 @@ export const aboutDifferentials: AboutDifferential[] = [
     id: "resultados",
     title: "Foco em resultados",
     description: "Entregamos soluções que geram impacto real.",
+    icon: "chart",
   },
   {
     id: "parceria",
     title: "Parceria verdadeira",
     description: "Trabalhamos lado a lado com nossos clientes.",
+    icon: "consulting",
   },
   {
     id: "qualidade",
     title: "Agilidade e qualidade",
     description: "Métodos modernos e código de alta qualidade.",
+    icon: "gear",
   },
 ];
