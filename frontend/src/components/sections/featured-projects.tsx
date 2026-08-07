@@ -2,9 +2,11 @@ import Link from "next/link";
 import { Container } from "@/components/layout/container";
 import { ProjectCard } from "@/components/ui/project-card";
 import { IconArrowRight } from "@/components/ui/icons";
-import { featuredProjects } from "@/data/projects";
+import { getFeaturedProjects } from "@/data/projects";
 
 export function FeaturedProjects() {
+  const featuredProjects = getFeaturedProjects();
+
   return (
     <section
       id="projetos"

@@ -7,7 +7,11 @@ import {
   IconLink,
 } from "@/components/ui/icons";
 import { ProjectPreviewVisual } from "@/components/ui/project-previews";
-import type { FeaturedProject, ProjectAccent, ProjectIcon } from "@/types";
+import {
+  getProjectCategoryLabel,
+  getProjectStatusLabel,
+} from "@/data/projects";
+import type { Project, ProjectAccent, ProjectIcon } from "@/types";
 
 const accentStyles: Record<
   ProjectAccent,
@@ -43,9 +47,11 @@ const iconMap: Record<
   chart: IconChart,
 };
 
-export function ProjectCard({ project }: { project: FeaturedProject }) {
+export function ProjectCard({ project }: { project: Project }) {
   const styles = accentStyles[project.accent];
   const Icon = iconMap[project.icon];
+  const categoryLabel = getProjectCategoryLabel(project.category);
+  const statusLabel = getProjectStatusLabel(project.status);
 
   return (
     <article
@@ -70,20 +76,20 @@ export function ProjectCard({ project }: { project: FeaturedProject }) {
           </div>
 
           <p className="mt-2.5 max-w-[17rem] text-[13px] leading-relaxed text-text-secondary sm:mt-3">
-            {project.description}
+            {project.shortDescription}
           </p>
 
           <div className="mt-auto flex items-center justify-between gap-2 pt-3.5">
             <div className="flex flex-wrap items-center gap-2">
               <span className="rounded-md border border-[#24315F] px-2 py-0.5 text-[10px] font-semibold tracking-[0.12em] text-text-secondary uppercase">
-                {project.tag}
+                {categoryLabel}
               </span>
               <span
                 className="inline-flex items-center gap-1.5 text-[11px] font-medium text-accent-green"
-                aria-label={`Status: ${project.status}`}
+                aria-label={`Status: ${statusLabel}`}
               >
                 <span className="h-1.5 w-1.5 rounded-full bg-accent-green" aria-hidden />
-                {project.status}
+                {statusLabel}
               </span>
             </div>
             <Link

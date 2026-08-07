@@ -10,7 +10,7 @@ const LOGO_ALT = "DSTUDIUM — Tecnologia que transforma";
  */
 const LOGO_SCALE = {
   header: 2.05,
-  footer: 1.75,
+  footer: 1.9,
 } as const;
 
 const sizeStyles = {
@@ -19,7 +19,7 @@ const sizeStyles = {
       "h-[48px] w-[200px] sm:h-[52px] sm:w-[224px] lg:h-[56px] lg:w-[236px]",
   },
   footer: {
-    className: "h-8 w-[136px] sm:h-9 sm:w-[152px]",
+    className: "h-10 w-[168px] sm:h-11 sm:w-[184px]",
   },
 } as const;
 

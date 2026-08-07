@@ -6,19 +6,82 @@ export type NavItem = {
 export type ProjectAccent = "purple" | "blue" | "orange";
 export type ProjectIcon = "calendar" | "link" | "chart";
 export type ProjectPreview = "agenda" | "links" | "metrics";
-export type ProjectStatus = "Ativo";
-export type ProjectCategory = "SaaS";
 
-export type FeaturedProject = {
+/** Valores técnicos de status — labels em PROJECT_STATUS_LABELS. */
+export type ProjectStatus =
+  | "active"
+  | "development"
+  | "completed"
+  | "discontinued"
+  | "private";
+
+/** Valores técnicos de categoria — labels em PROJECT_CATEGORY_LABELS. */
+export type ProjectCategory =
+  | "saas"
+  | "web-app"
+  | "automation"
+  | "ai"
+  | "platform"
+  | "institutional"
+  | "own-project"
+  | "case";
+
+export type ProjectAiUsage = {
+  used: boolean;
+  summary?: string;
+  applications?: string[];
+};
+
+export type Project = {
   id: string;
+  slug: string;
+
   name: string;
+  shortName?: string;
   subtitle: string;
-  description: string;
-  tag: ProjectCategory;
+  shortDescription: string;
+
+  category: ProjectCategory;
   status: ProjectStatus;
+
+  featured: boolean;
+  order?: number;
+
   accent: ProjectAccent;
   icon: ProjectIcon;
   preview: ProjectPreview;
+
+  technologies?: string[];
+  integrations?: string[];
+
+  ai?: {
+    product?: ProjectAiUsage;
+    development?: ProjectAiUsage;
+  };
+
+  links?: {
+    website?: string;
+    github?: string;
+  };
+
+  /** Assets futuros em `public/projects/<slug>/`. */
+  media?: {
+    cover?: string;
+    screenshots?: string[];
+  };
+
+  caseStudy?: {
+    problem?: string;
+    solution?: string;
+    architecture?: string;
+    highlights?: string[];
+    results?: string[];
+  };
+
+  seo?: {
+    title?: string;
+    description?: string;
+  };
 };
 
 export type PillarAccent = "purple" | "blue" | "green" | "orange";
