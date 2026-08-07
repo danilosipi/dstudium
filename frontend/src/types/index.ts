@@ -65,12 +65,21 @@ export type Solution = {
   visual: SolutionVisual;
 };
 
+export type ProcessStepAccent = "blue" | "cyan" | "violet" | "orange" | "green";
+export type ProcessStepIcon =
+  | "diagnosis"
+  | "architecture"
+  | "development"
+  | "automation"
+  | "evolution";
+
 export type ProcessStep = {
   id: string;
+  number: string;
   title: string;
   description: string;
-  accent: "blue" | "cyan" | "violet" | "orange" | "green";
-  icon: "diagnosis" | "architecture" | "development" | "automation" | "evolution";
+  accent: ProcessStepAccent;
+  icon: ProcessStepIcon;
 };
 
 export type AboutIcon = "chart" | "consulting" | "gear";
