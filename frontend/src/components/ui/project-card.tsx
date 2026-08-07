@@ -47,7 +47,15 @@ const iconMap: Record<
   chart: IconChart,
 };
 
-export function ProjectCard({ project }: { project: Project }) {
+export type ProjectCardCta = "link" | "soon" | "none";
+
+type ProjectCardProps = {
+  project: Project;
+  /** Default `"link"` preserva o comportamento da home. */
+  cta?: ProjectCardCta;
+};
+
+export function ProjectCard({ project, cta = "link" }: ProjectCardProps) {
   const styles = accentStyles[project.accent];
   const Icon = iconMap[project.icon];
   const categoryLabel = getProjectCategoryLabel(project.category);
@@ -92,13 +100,22 @@ export function ProjectCard({ project }: { project: Project }) {
                 {statusLabel}
               </span>
             </div>
-            <Link
-              href="#projetos"
-              className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#24315F] text-text-secondary transition-colors group-hover:border-blue-accent group-hover:text-blue-accent focus-visible:outline-offset-2"
-              aria-label={`Ver projeto ${project.name}`}
-            >
-              <IconArrowRight className="h-3.5 w-3.5" />
-            </Link>
+
+            {cta === "link" ? (
+              <Link
+                href="#projetos"
+                className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#24315F] text-text-secondary transition-colors group-hover:border-blue-accent group-hover:text-blue-accent focus-visible:outline-offset-2"
+                aria-label={`Ver projeto ${project.name}`}
+              >
+                <IconArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            ) : null}
+
+            {cta === "soon" ? (
+              <span className="shrink-0 text-[10px] font-medium tracking-wide text-text-secondary/70">
+                Case completo em breve
+              </span>
+            ) : null}
           </div>
         </div>
 
