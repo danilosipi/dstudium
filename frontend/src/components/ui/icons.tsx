@@ -164,6 +164,42 @@ export function IconChart({ className = "" }: IconProps) {
   );
 }
 
+export function IconInventory({ className = "" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <path
+        d="M9.5 3.5h5l1 3.5H8.5l1-3.5Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8 7h8v11.5a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V7Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinejoin="round"
+      />
+      <path d="M10.5 11h3M10.5 14.5h3" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function IconBike({ className = "" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+      <circle cx="6.5" cy="15.5" r="3" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="17.5" cy="15.5" r="3" stroke="currentColor" strokeWidth="1.7" />
+      <path
+        d="M6.5 15.5 10 8.5h3.5l2.5 7M10 8.5l-1.5 3.5h5.5M13.5 8.5V6.5h2"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export function IconCheck({ className = "" }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>

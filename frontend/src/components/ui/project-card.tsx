@@ -2,8 +2,10 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import {
   IconArrowRight,
+  IconBike,
   IconCalendar,
   IconChart,
+  IconInventory,
   IconLink,
 } from "@/components/ui/icons";
 import { ProjectPreviewVisual } from "@/components/ui/project-previews";
@@ -45,6 +47,8 @@ const iconMap: Record<
   calendar: IconCalendar,
   link: IconLink,
   chart: IconChart,
+  inventory: IconInventory,
+  bike: IconBike,
 };
 
 export type ProjectCardCta = "link" | "none";
