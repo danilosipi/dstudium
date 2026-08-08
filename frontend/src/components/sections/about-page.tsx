@@ -524,7 +524,7 @@ function AboutFinalCta() {
                 {aboutFinalCta.description}
               </p>
               <div className="mt-6 flex flex-wrap gap-3 sm:mt-7">
-                <ButtonLink href="/#contato" variant="primary">
+                <ButtonLink href="/contato" variant="primary">
                   Fale com a DSTUDIUM
                 </ButtonLink>
                 <ButtonLink href="/solucoes" variant="secondary">

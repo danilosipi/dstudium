@@ -73,7 +73,7 @@ export function Hero() {
               Conheça nossas soluções
             </ButtonLink>
             <ButtonLink
-              href="/#contato"
+              href="/contato"
               variant="secondary"
               className="w-full sm:w-auto"
             >

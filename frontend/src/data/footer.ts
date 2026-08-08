@@ -1,4 +1,5 @@
 import type { FooterLinkGroup } from "@/types";
+import { institutionalContact } from "@/data/contact";
 import { mainNav } from "@/data/navigation";
 
 export const footerBrandText =
@@ -30,7 +31,4 @@ export const footerLinkGroups: FooterLinkGroup[] = [
   },
 ];
 
-export const footerContact = {
-  email: "contato@dstudium.com",
-  location: "São Paulo - SP, Brasil",
-} as const;
+export const footerContact = institutionalContact;

@@ -147,7 +147,7 @@ function SolutionsHero() {
           visão de negócio.
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
-          <ButtonLink href="/#contato" variant="primary">
+          <ButtonLink href="/contato" variant="primary">
             Fale com a DSTUDIUM
           </ButtonLink>
           <ButtonLink href="/projetos" variant="secondary">
@@ -483,7 +483,7 @@ function SolutionsFinalCta() {
                 oportunidade de transformação digital.
               </p>
               <div className="mt-6 sm:mt-7">
-                <ButtonLink href="/#contato" variant="primary" className="shrink-0">
+                <ButtonLink href="/contato" variant="primary" className="shrink-0">
                   Fale com a DSTUDIUM
                 </ButtonLink>
               </div>

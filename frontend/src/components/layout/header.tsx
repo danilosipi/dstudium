@@ -22,6 +22,9 @@ function activeHrefForPathname(pathname: string): string | null {
   if (pathname === "/projetos" || pathname.startsWith("/projetos/")) {
     return "/projetos";
   }
+  if (pathname === "/contato" || pathname.startsWith("/contato/")) {
+    return "/contato";
+  }
   if (pathname === "/") {
     return null;
   }
@@ -154,7 +157,7 @@ export function Header() {
 
         <div className="hidden justify-self-end lg:block">
           <ButtonLink
-            href="/#contato"
+            href="/contato"
             variant="primary"
             className="px-4 py-2.5 text-[10px] tracking-[0.1em]"
             onClick={closeMenu}
@@ -220,7 +223,7 @@ export function Header() {
           })}
           <div className="pt-3">
             <ButtonLink
-              href="/#contato"
+              href="/contato"
               variant="primary"
               className="w-full"
               onClick={closeMenu}

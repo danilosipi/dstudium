@@ -364,7 +364,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
             negócio.
           </p>
           <div className="mt-6">
-            <ButtonLink href="/#contato" variant="primary">
+            <ButtonLink href="/contato" variant="primary">
               Fale com a DSTUDIUM
             </ButtonLink>
           </div>
