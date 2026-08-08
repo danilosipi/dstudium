@@ -4,8 +4,22 @@ export type NavItem = {
 };
 
 export type ProjectAccent = "purple" | "blue" | "orange";
-export type ProjectIcon = "calendar" | "link" | "chart" | "inventory" | "bike";
-export type ProjectPreview = "agenda" | "links" | "metrics" | "inventory" | "community";
+export type ProjectIcon =
+  | "calendar"
+  | "link"
+  | "chart"
+  | "inventory"
+  | "bike"
+  | "ai"
+  | "architecture";
+export type ProjectPreview =
+  | "agenda"
+  | "links"
+  | "metrics"
+  | "inventory"
+  | "community"
+  | "agents"
+  | "platform";
 
 /** Valores técnicos de status — labels em PROJECT_STATUS_LABELS. */
 export type ProjectStatus =

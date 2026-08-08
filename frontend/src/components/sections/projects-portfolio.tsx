@@ -1,6 +1,13 @@
+"use client";
+
+import { useState } from "react";
 import { Container } from "@/components/layout/container";
 import { ProjectCard } from "@/components/ui/project-card";
-import { getAllProjects } from "@/data/projects";
+import {
+  getPortfolioSections,
+  PORTFOLIO_FILTERS,
+  type PortfolioFilterId,
+} from "@/data/projects";
 
 const CAPABILITIES = [
   "SaaS",
@@ -12,7 +19,11 @@ const CAPABILITIES = [
 ] as const;
 
 export function ProjectsPortfolio() {
-  const projects = getAllProjects();
+  const [filter, setFilter] = useState<PortfolioFilterId>("all");
+  const sections = getPortfolioSections(filter);
+  const visibleSections = sections.filter(
+    (section) => section.projects.length > 0 || Boolean(section.emptyMessage),
+  );
 
   return (
     <>
@@ -60,16 +71,61 @@ export function ProjectsPortfolio() {
         aria-labelledby="projetos-grid-heading"
       >
         <Container>
-          <h2
-            id="projetos-grid-heading"
-            className="mb-5 text-sm font-semibold tracking-[0.18em] text-blue-accent uppercase sm:mb-6"
-          >
-            Todos os projetos
-          </h2>
+          <div className="mb-6 flex flex-col gap-4 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
+            <h2
+              id="projetos-grid-heading"
+              className="text-sm font-semibold tracking-[0.18em] text-blue-accent uppercase"
+            >
+              Projetos
+            </h2>
 
-          <div className="grid grid-cols-1 items-stretch gap-3.5 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+            <div
+              className="flex flex-wrap gap-2"
+              role="group"
+              aria-label="Filtrar projetos por categoria"
+            >
+              {PORTFOLIO_FILTERS.map((item) => {
+                const selected = filter === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => setFilter(item.id)}
+                    aria-pressed={selected}
+                    className={`rounded-md border px-2.5 py-1.5 text-[11px] font-medium tracking-wide transition-colors focus-visible:outline-offset-2 ${
+                      selected
+                        ? "border-blue-accent/60 bg-blue-accent/15 text-text-primary"
+                        : "border-[#24315F] bg-surface/30 text-text-secondary hover:border-[#3a4d8a] hover:text-text-primary"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="space-y-10 sm:space-y-12">
+            {visibleSections.map((section) => (
+              <div key={section.id}>
+                {filter === "all" || visibleSections.length > 1 ? (
+                  <h3 className="mb-4 text-xs font-semibold tracking-[0.16em] text-text-secondary uppercase sm:mb-5">
+                    {section.label}
+                  </h3>
+                ) : null}
+
+                {section.projects.length > 0 ? (
+                  <div className="grid grid-cols-1 items-stretch gap-3.5 md:grid-cols-2 lg:grid-cols-3">
+                    {section.projects.map((project) => (
+                      <ProjectCard key={project.id} project={project} />
+                    ))}
+                  </div>
+                ) : section.emptyMessage ? (
+                  <p className="max-w-xl rounded-lg border border-dashed border-[#24315F] bg-surface/20 px-4 py-5 text-[13px] leading-relaxed text-text-secondary">
+                    {section.emptyMessage}
+                  </p>
+                ) : null}
+              </div>
             ))}
           </div>
         </Container>
@@ -97,9 +153,8 @@ export function ProjectsPortfolio() {
             <p>
               Cada projeto parte de um problema real e evolui com arquitetura
               clara, foco em experiência e capacidade de crescer com o negócio.
-              Esta página consolida o que a DSTUDIUM constrói — e, em breve,
-              cada case terá sua própria página com detalhes técnicos e
-              resultados.
+              Esta página consolida o que a DSTUDIUM constrói — e cada case
+              detalha o contexto, a solução e as decisões técnicas relevantes.
             </p>
           </div>
         </Container>

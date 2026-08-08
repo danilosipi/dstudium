@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import {
+  IconAi,
+  IconArchitecture,
   IconArrowRight,
   IconBike,
   IconCalendar,
@@ -49,6 +51,8 @@ const iconMap: Record<
   chart: IconChart,
   inventory: IconInventory,
   bike: IconBike,
+  ai: IconAi,
+  architecture: IconArchitecture,
 };
 
 export type ProjectCardCta = "link" | "none";

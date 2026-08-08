@@ -213,12 +213,87 @@ function CommunityPreview() {
   );
 }
 
+function AgentsPreview() {
+  return (
+    <PreviewShell accentClass="from-[#1a1440] via-[#12122e] to-[#0a0c1c]">
+      <div className="mb-2 flex items-center justify-between">
+        <div className="h-1.5 w-12 rounded-full bg-accent-violet/65" />
+        <div className="flex -space-x-1">
+          {[0, 1, 2].map((i) => (
+            <span
+              key={i}
+              className="h-3 w-3 rounded-full bg-accent-purple/40 ring-1 ring-accent-violet/45"
+              style={{ opacity: 1 - i * 0.2 }}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="mb-2 grid grid-cols-3 gap-1">
+        {["h-6", "h-8", "h-5"].map((h, i) => (
+          <div
+            key={h}
+            className={`${h} rounded-sm ring-1 ring-accent-violet/20 ${
+              i === 1 ? "bg-accent-purple/45" : "bg-white/10"
+            }`}
+          />
+        ))}
+      </div>
+      <div className="space-y-1">
+        {[
+          { w: "w-[78%]", active: true },
+          { w: "w-[62%]", active: false },
+          { w: "w-[70%]", active: false },
+        ].map((row) => (
+          <div
+            key={row.w}
+            className="flex items-center gap-1.5 rounded-md bg-black/30 px-1.5 py-1 ring-1 ring-accent-violet/15"
+          >
+            <span
+              className={`h-2 w-2 shrink-0 rounded-full ${
+                row.active ? "bg-accent-green/80" : "bg-accent-violet/50"
+              }`}
+            />
+            <span className={`h-1.5 ${row.w} rounded-full bg-white/15`} />
+          </div>
+        ))}
+      </div>
+    </PreviewShell>
+  );
+}
+
+function PlatformPreview() {
+  return (
+    <PreviewShell accentClass="from-[#10203a] via-[#0e1830] to-[#0a1220]">
+      <div className="mb-2 flex items-center justify-between">
+        <div className="h-1.5 w-14 rounded-full bg-blue-accent/60" />
+        <div className="h-3.5 w-3.5 rounded-sm bg-blue-primary/35 ring-1 ring-blue-accent/40" />
+      </div>
+      <div className="mb-2 grid grid-cols-2 gap-1">
+        {["h-7", "h-7", "h-6", "h-6"].map((h, i) => (
+          <div
+            key={`${h}-${i}`}
+            className={`${h} rounded-sm ring-1 ring-blue-accent/20 ${
+              i === 0 ? "bg-blue-accent/40" : "bg-white/10"
+            }`}
+          />
+        ))}
+      </div>
+      <div className="flex items-center gap-1">
+        <div className="h-1.5 flex-1 rounded-full bg-blue-accent/35" />
+        <div className="h-1.5 w-1/4 rounded-full bg-white/12" />
+      </div>
+    </PreviewShell>
+  );
+}
+
 const previewMap: Record<ProjectPreview, () => ReactNode> = {
   agenda: AgendaPreview,
   links: LinksPreview,
   metrics: MetricsPreview,
   inventory: InventoryPreview,
   community: CommunityPreview,
+  agents: AgentsPreview,
+  platform: PlatformPreview,
 };
 
 export function ProjectPreviewVisual({ type }: { type: ProjectPreview }) {
