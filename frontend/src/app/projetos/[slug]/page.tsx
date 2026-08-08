@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProjectDetail } from "@/components/sections/project-detail";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getAllProjects, getProjectBySlug } from "@/data/projects";
 import {
   absoluteUrl,
   defaultSocialImages,
   siteConfig,
 } from "@/data/seo";
+import { createProjectStructuredData } from "@/data/structured-data";
 
 export const dynamicParams = false;
 
@@ -81,6 +83,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main className="flex-1">
+      <JsonLd data={createProjectStructuredData(project)} />
       <ProjectDetail project={project} />
     </main>
   );
