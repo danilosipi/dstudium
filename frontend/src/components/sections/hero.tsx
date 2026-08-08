@@ -10,11 +10,12 @@ export function Hero() {
       aria-labelledby="hero-heading"
     >
       <Image
-        src="/brand/dstudium-hero-wide.png"
+        src="/brand/dstudium-hero-wide.webp"
         alt=""
         fill
         priority
         sizes="100vw"
+        quality={80}
         className="object-cover object-[68%_center] md:object-center"
         aria-hidden
       />

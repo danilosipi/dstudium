@@ -1,0 +1,40 @@
+
+> frontend@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.2.12 (Turbopack)
+
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 5.3s
+  Running TypeScript ...
+  Finished TypeScript in 9.7s ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/20) ...
+  Generating static pages using 5 workers (5/20) 
+  Generating static pages using 5 workers (10/20) 
+  Generating static pages using 5 workers (15/20) 
+Ô£ô Generating static pages using 5 workers (20/20) in 1228ms
+  Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ Ôùï /apple-icon.png
+Ôö£ Ôùï /contato
+Ôö£ Ôùï /privacidade
+Ôö£ Ôùï /projetos
+Ôö£ ÔùÅ /projetos/[slug]
+Ôöé Ôö£ /projetos/minha-agenda-zap
+Ôöé Ôö£ /projetos/agent-orchestrator
+Ôöé Ôö£ /projetos/clicano-site
+Ôöé Ôöö [+4 more paths]
+Ôö£ Ôùï /robots.txt
+Ôö£ Ôùï /sitemap.xml
+Ôö£ Ôùï /sobre
+Ôö£ Ôùï /solucoes
+Ôöö Ôùï /termos
+
+
+Ôùï  (Static)  prerendered as static content
+ÔùÅ  (SSG)     prerendered as static HTML (uses generateStaticParams)
+

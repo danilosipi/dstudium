@@ -1,10 +1,12 @@
 import Image from "next/image";
 
-const LOGO_SRC = "/brand/dstudium-logo.png";
+const LOGO_SRC = "/brand/dstudium-logo.webp";
 const LOGO_ALT = "DSTUDIUM — Tecnologia que transforma";
+const LOGO_WIDTH = 1024;
+const LOGO_HEIGHT = 683;
 
 /**
- * PNG 1536×1024 com padding preto generoso (~25% laterais, ~40% verticais).
+ * Logo WebP derivado do PNG oficial (padding generoso).
  * Escala amplia o conteúdo útil; overflow do container recorta o vazio.
  * object-contain (nunca object-cover) para não cortar símbolo/tagline.
  */
@@ -43,8 +45,8 @@ export function Brand({
       <Image
         src={LOGO_SRC}
         alt={LOGO_ALT}
-        width={1536}
-        height={1024}
+        width={LOGO_WIDTH}
+        height={LOGO_HEIGHT}
         priority={priority}
         className={`pointer-events-none absolute left-1/2 top-1/2 h-auto w-full max-w-none object-contain ${
           size === "header"

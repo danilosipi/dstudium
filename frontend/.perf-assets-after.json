@@ -1,0 +1,32 @@
+[
+  {
+    "input": "public/brand/dstudium-logo.png",
+    "output": "public/brand/dstudium-logo.webp",
+    "beforeBytes": 2108306,
+    "afterBytes": 31956,
+    "reductionPct": 98.5,
+    "beforeDim": "1536x1024",
+    "afterDim": "1024x683",
+    "hasAlpha": true
+  },
+  {
+    "input": "public/brand/dstudium-hero-wide.png",
+    "output": "public/brand/dstudium-hero-wide.webp",
+    "beforeBytes": 1509169,
+    "afterBytes": 71228,
+    "reductionPct": 95.3,
+    "beforeDim": "1993x789",
+    "afterDim": "1993x789",
+    "hasAlpha": false
+  },
+  {
+    "input": "public/brand/dstudium-hero-wide.png",
+    "output": "public/brand/dstudium-hero-md.webp",
+    "beforeBytes": 1509169,
+    "afterBytes": 33000,
+    "reductionPct": 97.8,
+    "beforeDim": "1993x789",
+    "afterDim": "1280x507",
+    "hasAlpha": false
+  }
+]

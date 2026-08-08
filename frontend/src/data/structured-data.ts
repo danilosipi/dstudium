@@ -54,7 +54,7 @@ export function createOrganizationSchema(): JsonObject {
     "@id": organizationId,
     name: siteConfig.siteName,
     url: siteConfig.siteUrl,
-    logo: absoluteUrl("/brand/dstudium-logo.png"),
+    logo: absoluteUrl("/brand/dstudium-logo.webp"),
     email: institutionalContact.email,
     areaServed: {
       "@type": "Country",
