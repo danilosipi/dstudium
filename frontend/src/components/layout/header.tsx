@@ -13,6 +13,9 @@ function hrefForSectionId(id: string): string {
 }
 
 function activeHrefForPathname(pathname: string): string | null {
+  if (pathname === "/sobre" || pathname.startsWith("/sobre/")) {
+    return "/sobre";
+  }
   if (pathname === "/solucoes" || pathname.startsWith("/solucoes/")) {
     return "/solucoes";
   }
