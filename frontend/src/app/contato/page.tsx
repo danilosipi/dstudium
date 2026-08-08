@@ -1,23 +1,12 @@
-import type { Metadata } from "next";
 import { ContactPage } from "@/components/sections/contact-page";
+import { createPageMetadata } from "@/data/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Contato | Fale com a DSTUDIUM",
   description:
     "Entre em contato com a DSTUDIUM para conversar sobre desenvolvimento de software, SaaS, automação, integrações, inteligência artificial e arquitetura.",
-  alternates: {
-    canonical: "https://dstudium.com/contato",
-  },
-  openGraph: {
-    title: "Contato | Fale com a DSTUDIUM",
-    description:
-      "Entre em contato com a DSTUDIUM para conversar sobre desenvolvimento de software, SaaS, automação, integrações, inteligência artificial e arquitetura.",
-    url: "https://dstudium.com/contato",
-    siteName: "DSTUDIUM",
-    locale: "pt_BR",
-    type: "website",
-  },
-};
+  path: "/contato",
+});
 
 export default function ContatoRoute() {
   return (

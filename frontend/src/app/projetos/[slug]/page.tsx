@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProjectDetail } from "@/components/sections/project-detail";
 import { getAllProjects, getProjectBySlug } from "@/data/projects";
+import {
+  absoluteUrl,
+  defaultSocialImages,
+  siteConfig,
+} from "@/data/seo";
 
 export const dynamicParams = false;
 
@@ -30,8 +35,17 @@ export async function generateMetadata({
   const title =
     project.seo?.title ?? `${project.subtitle || project.name} | Projeto DSTUDIUM`;
   const description = project.seo?.description ?? project.shortDescription;
-  const canonical = `https://dstudium.com/projetos/${project.slug}`;
+  const canonical = absoluteUrl(`/projetos/${project.slug}`);
   const cover = project.media?.cover;
+  const images = cover
+    ? [
+        {
+          url: cover,
+          alt: `${project.name} — ${project.subtitle}`,
+        },
+      ]
+    : defaultSocialImages(`${project.name} — ${project.subtitle}`);
+  const twitterImage = cover ?? siteConfig.defaultOgImage;
 
   return {
     title,
@@ -43,19 +57,16 @@ export async function generateMetadata({
       title,
       description,
       url: canonical,
-      siteName: "DSTUDIUM",
-      locale: "pt_BR",
+      siteName: siteConfig.siteName,
+      locale: siteConfig.locale,
       type: "website",
-      ...(cover
-        ? {
-            images: [
-              {
-                url: cover,
-                alt: `${project.name} — ${project.subtitle}`,
-              },
-            ],
-          }
-        : {}),
+      images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [twitterImage],
     },
   };
 }

@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import {
+  defaultSocialImages,
+  siteConfig,
+} from "@/data/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -10,10 +14,25 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dstudium.com"),
-  title: "DSTUDIUM | Tecnologia, automação e inteligência artificial",
-  description:
-    "Produtos digitais, automação de processos, integrações e soluções com inteligência artificial para negócios.",
+  metadataBase: new URL(siteConfig.siteUrl),
+  title: siteConfig.defaultTitle,
+  description: siteConfig.defaultDescription,
+  applicationName: siteConfig.siteName,
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    siteName: siteConfig.siteName,
+    title: siteConfig.defaultTitle,
+    description: siteConfig.defaultDescription,
+    url: siteConfig.siteUrl,
+    images: defaultSocialImages(),
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.defaultTitle,
+    description: siteConfig.defaultDescription,
+    images: [siteConfig.defaultOgImage],
+  },
 };
 
 export default function RootLayout({
