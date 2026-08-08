@@ -60,11 +60,13 @@ export function AboutVisual() {
               </div>
             </div>
             <div className="flex flex-col items-end gap-1">
-              <span className="inline-flex items-center gap-1.5 rounded-md border border-accent-green/30 bg-accent-green/10 px-2 py-0.5 text-[10px] font-medium tracking-wide text-accent-green uppercase">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent-green shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-                Online
+              <span className="inline-flex items-center gap-1.5 rounded-md border border-blue-accent/30 bg-blue-accent/10 px-2 py-0.5 text-[10px] font-medium tracking-wide text-blue-accent uppercase">
+                <span className="h-1.5 w-1.5 rounded-full bg-blue-accent shadow-[0_0_8px_rgba(94,162,255,0.8)]" />
+                Núcleo
               </span>
-              <span className="text-[10px] text-text-secondary/80">v2.4 · ops</span>
+              <span className="text-[10px] text-text-secondary/80">
+                Arquitetura digital
+              </span>
             </div>
           </div>
         </div>
@@ -147,23 +149,26 @@ export function AboutVisual() {
             </div>
           </div>
 
-          {/* Metrics mini dashboard */}
+          {/* Positioning mini panel — conceptual, não métricas promocionais */}
           <div className="glass-panel col-span-2 flex flex-col rounded-xl p-3.5">
             <p className="text-[10px] font-semibold tracking-[0.14em] text-text-secondary uppercase">
-              Entregas
+              Pilares
             </p>
-            <p className="mt-2 text-2xl font-semibold tracking-tight text-text-primary">
-              98<span className="text-sm text-blue-accent">%</span>
+            <p className="mt-2 text-xl font-semibold tracking-tight text-text-primary">
+              Escala
             </p>
-            <p className="text-[10px] text-text-secondary">SLA no prazo</p>
+            <p className="text-[10px] leading-relaxed text-text-secondary">
+              Arquitetura · Integração · Automação
+            </p>
 
-            <div className="mt-auto flex items-end gap-1 pt-3">
-              {[40, 58, 48, 72, 64, 86, 78].map((h, i) => (
+            <div className="mt-auto flex flex-wrap gap-1.5 pt-3">
+              {["Sistemas", "APIs", "IA"].map((label) => (
                 <span
-                  key={i}
-                  className="flex-1 rounded-sm bg-gradient-to-t from-blue-primary/30 to-blue-accent/70"
-                  style={{ height: `${h * 0.32}px` }}
-                />
+                  key={label}
+                  className="rounded border border-border/80 px-1.5 py-0.5 text-[9px] text-text-secondary"
+                >
+                  {label}
+                </span>
               ))}
             </div>
           </div>
@@ -174,9 +179,9 @@ export function AboutVisual() {
           <div className="glass-panel rounded-xl p-3.5">
             <div className="mb-3 flex items-center justify-between">
               <p className="text-[10px] font-semibold tracking-[0.14em] text-text-secondary uppercase">
-                Equipe
+                Capacidades
               </p>
-              <span className="text-[10px] text-text-secondary">+ produto</span>
+              <span className="text-[10px] text-text-secondary">produto</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="flex -space-x-2">
@@ -187,12 +192,12 @@ export function AboutVisual() {
                   AR
                 </span>
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#0B1024] bg-surface text-[9px] font-semibold text-text-secondary">
-                  +4
+                  IA
                 </span>
               </div>
               <div className="min-w-0">
                 <p className="truncate text-xs font-medium text-text-primary">
-                  Squad ativa
+                  Capacidade técnica
                 </p>
                 <p className="truncate text-[10px] text-text-secondary">
                   Arquitetura · Dev · IA

@@ -378,7 +378,7 @@ export const projects: Project[] = [
       ],
     },
     seo: {
-      title: "Agent Orchestrator | Orquestração de Agentes de IA | DSTUDIUM",
+      title: "Agent Orchestrator | Orquestração de Agentes de IA",
       description:
         "Plataforma da DSTUDIUM para orquestrar agentes de IA, workflows, handoffs e execução auditável entre projetos.",
     },
@@ -414,7 +414,7 @@ export const projects: Project[] = [
       ],
     },
     seo: {
-      title: "ERP-CAP | Plataforma de Capitalização em Definição | DSTUDIUM",
+      title: "ERP-CAP | Plataforma de Capitalização em Definição",
       description:
         "ERP/SaaS modular da DSTUDIUM para títulos de capitalização — atualmente em discovery e definição arquitetural.",
     },
