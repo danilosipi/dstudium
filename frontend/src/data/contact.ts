@@ -40,8 +40,10 @@ export const contactPageContent = {
   supportTitle: "Não sabe exatamente qual solução precisa?",
   supportText:
     "Não é necessário chegar com a arquitetura ou tecnologia definida. Podemos começar pelo problema, entender o contexto e estruturar os próximos passos.",
-  privacyNote:
-    "Ao enviar sua mensagem, você concorda com o uso das informações fornecidas exclusivamente para retorno do contato.",
+  privacyNoteBeforeLink:
+    "Ao enviar sua mensagem, você concorda com o tratamento das informações fornecidas para atendimento do contato, conforme nossa",
+  privacyNoteLinkLabel: "Política de Privacidade",
+  privacyNoteHref: "/privacidade",
   formTitle: "Envie uma mensagem",
   formHint:
     "Ao enviar, seu cliente de e-mail abrirá com a mensagem preenchida para contato@dstudium.com.",

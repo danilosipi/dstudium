@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useId, useState, type FormEvent } from "react";
 import {
   buildContactMailto,
@@ -235,7 +236,14 @@ export function ContactForm() {
       </div>
 
       <p className="mt-5 text-[12px] leading-relaxed text-text-secondary">
-        {contactPageContent.privacyNote}
+        {contactPageContent.privacyNoteBeforeLink}{" "}
+        <Link
+          href={contactPageContent.privacyNoteHref}
+          className="text-blue-accent transition-colors hover:text-text-primary focus-visible:outline-offset-2"
+        >
+          {contactPageContent.privacyNoteLinkLabel}
+        </Link>
+        .
       </p>
 
       <button

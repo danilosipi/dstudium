@@ -24,9 +24,8 @@ export const footerLinkGroups: FooterLinkGroup[] = [
   {
     title: "Informações",
     links: [
-      { label: "Política de Privacidade", disabled: true },
-      { label: "Termos de Uso", disabled: true },
-      { label: "Cookies", disabled: true },
+      { label: "Política de Privacidade", href: "/privacidade" },
+      { label: "Termos de Uso", href: "/termos" },
     ],
   },
 ];
