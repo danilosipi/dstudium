@@ -7,11 +7,24 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/layout/container";
 import { mainNav } from "@/data/navigation";
 
-const sectionIds = mainNav.map((item) => item.href.replace("#", ""));
+function hrefForSectionId(id: string): string {
+  return id === "inicio" ? "/" : `/#${id}`;
+}
+
+const sectionIds = mainNav.flatMap((item) => {
+  const hashIndex = item.href.indexOf("#");
+  if (hashIndex >= 0) {
+    return [item.href.slice(hashIndex + 1)];
+  }
+  if (item.href === "/") {
+    return ["inicio"];
+  }
+  return [];
+});
 
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("#inicio");
+  const [active, setActive] = useState("/");
   const menuId = useId();
 
   useEffect(() => {
@@ -28,7 +41,7 @@ export function Header() {
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
         if (visible[0]?.target.id) {
-          setActive(`#${visible[0].target.id}`);
+          setActive(hrefForSectionId(visible[0].target.id));
         }
       },
       {
@@ -41,7 +54,7 @@ export function Header() {
 
     const syncHash = () => {
       if (window.location.hash) {
-        setActive(window.location.hash);
+        setActive(hrefForSectionId(window.location.hash.slice(1)));
       }
     };
 
@@ -77,10 +90,10 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-border/40 bg-bg-primary/90 backdrop-blur-md">
       <Container className="grid h-[68px] grid-cols-[1fr_auto] items-center gap-3 sm:h-[76px] lg:grid-cols-[1fr_auto_1fr] lg:gap-4">
         <Link
-          href="#inicio"
+          href="/"
           className="justify-self-start rounded-md"
           onClick={() => {
-            setActive("#inicio");
+            setActive("/");
             closeMenu();
           }}
         >
@@ -119,7 +132,7 @@ export function Header() {
 
         <div className="hidden justify-self-end lg:block">
           <ButtonLink
-            href="#contato"
+            href="/#contato"
             variant="primary"
             className="px-4 py-2.5 text-[10px] tracking-[0.1em]"
             onClick={closeMenu}
@@ -185,7 +198,7 @@ export function Header() {
           })}
           <div className="pt-3">
             <ButtonLink
-              href="#contato"
+              href="/#contato"
               variant="primary"
               className="w-full"
               onClick={closeMenu}

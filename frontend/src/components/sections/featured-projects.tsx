@@ -22,7 +22,7 @@ export function FeaturedProjects() {
             Projetos em destaque
           </h2>
           <Link
-            href="#projetos"
+            href="/projetos"
             className="inline-flex items-center gap-2 text-sm text-text-secondary transition-colors hover:text-text-primary"
           >
             Ver todos os projetos

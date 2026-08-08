@@ -66,14 +66,14 @@ export function Hero() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <ButtonLink
-              href="#solucoes"
+              href="/#solucoes"
               variant="primary"
               className="w-full sm:w-auto"
             >
               Conheça nossas soluções
             </ButtonLink>
             <ButtonLink
-              href="#contato"
+              href="/#contato"
               variant="secondary"
               className="w-full sm:w-auto"
             >

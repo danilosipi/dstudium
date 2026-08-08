@@ -5,7 +5,7 @@ export const aboutContent = {
   title: "Transformamos ideias em soluções digitais reais",
   text: "Somos uma empresa de tecnologia especializada no desenvolvimento de sistemas, automação de processos e soluções com inteligência artificial. Nosso foco é gerar valor para empresas por meio de tecnologia simples, eficiente e escalável.",
   ctaLabel: "Conheça mais sobre nós",
-  ctaHref: "#sobre",
+  ctaHref: "/#sobre",
 } as const;
 
 export const aboutDifferentials: AboutDifferential[] = [

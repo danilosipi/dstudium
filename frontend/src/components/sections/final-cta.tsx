@@ -45,7 +45,7 @@ export function FinalCta() {
                 resultados reais para sua empresa.
               </p>
               <div className="mt-6 sm:mt-7">
-                <ButtonLink href="#contato" variant="primary" className="shrink-0">
+                <ButtonLink href="/#contato" variant="primary" className="shrink-0">
                   Fale com um especialista
                 </ButtonLink>
               </div>
