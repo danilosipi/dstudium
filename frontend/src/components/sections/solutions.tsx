@@ -25,7 +25,7 @@ export function Solutions() {
             </h2>
           </div>
           <Link
-            href="/#solucoes"
+            href="/solucoes"
             className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.14em] text-text-secondary uppercase transition-colors hover:text-text-primary focus-visible:outline-offset-2"
           >
             Ver todas as soluções

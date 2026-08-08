@@ -142,6 +142,15 @@ export type Solution = {
   visual: SolutionVisual;
 };
 
+export type SolutionDetail = {
+  id: string;
+  lead: string;
+  applications?: string[];
+  examples?: string[];
+  concepts?: string[];
+  relatedProjectSlugs?: string[];
+};
+
 export type ProcessStepAccent = "blue" | "cyan" | "violet" | "orange" | "green";
 export type ProcessStepIcon =
   | "diagnosis"

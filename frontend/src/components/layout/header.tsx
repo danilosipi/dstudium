@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Brand } from "@/components/brand/brand";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/layout/container";
@@ -9,6 +10,19 @@ import { mainNav } from "@/data/navigation";
 
 function hrefForSectionId(id: string): string {
   return id === "inicio" ? "/" : `/#${id}`;
+}
+
+function activeHrefForPathname(pathname: string): string | null {
+  if (pathname === "/solucoes" || pathname.startsWith("/solucoes/")) {
+    return "/solucoes";
+  }
+  if (pathname === "/projetos" || pathname.startsWith("/projetos/")) {
+    return "/projetos";
+  }
+  if (pathname === "/") {
+    return null;
+  }
+  return null;
 }
 
 const sectionIds = mainNav.flatMap((item) => {
@@ -23,11 +37,16 @@ const sectionIds = mainNav.flatMap((item) => {
 });
 
 export function Header() {
+  const pathname = usePathname();
+  const routeActive = activeHrefForPathname(pathname);
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("/");
+  const [sectionActive, setSectionActive] = useState("/");
   const menuId = useId();
+  const active = routeActive ?? sectionActive;
 
   useEffect(() => {
+    if (pathname !== "/") return;
+
     const elements = sectionIds
       .map((id) => document.getElementById(id))
       .filter((element): element is HTMLElement => Boolean(element));
@@ -41,7 +60,7 @@ export function Header() {
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
         if (visible[0]?.target.id) {
-          setActive(hrefForSectionId(visible[0].target.id));
+          setSectionActive(hrefForSectionId(visible[0].target.id));
         }
       },
       {
@@ -54,7 +73,7 @@ export function Header() {
 
     const syncHash = () => {
       if (window.location.hash) {
-        setActive(hrefForSectionId(window.location.hash.slice(1)));
+        setSectionActive(hrefForSectionId(window.location.hash.slice(1)));
       }
     };
 
@@ -65,7 +84,7 @@ export function Header() {
       observer.disconnect();
       window.removeEventListener("hashchange", syncHash);
     };
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     if (!open) return;
@@ -93,7 +112,7 @@ export function Header() {
           href="/"
           className="justify-self-start rounded-md"
           onClick={() => {
-            setActive("/");
+            setSectionActive("/");
             closeMenu();
           }}
         >
@@ -111,7 +130,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 aria-current={isActive ? "true" : undefined}
-                onClick={() => setActive(item.href)}
+                onClick={() => setSectionActive(item.href)}
                 className={`relative px-2.5 py-2 text-sm transition-colors ${
                   isActive
                     ? "text-text-primary"
@@ -185,7 +204,7 @@ export function Header() {
                 href={item.href}
                 aria-current={isActive ? "true" : undefined}
                 onClick={() => {
-                  setActive(item.href);
+                  setSectionActive(item.href);
                   closeMenu();
                 }}
                 className={`rounded-md px-3 py-3 text-base transition-colors hover:bg-surface ${

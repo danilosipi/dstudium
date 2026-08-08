@@ -12,12 +12,12 @@ export const footerLinkGroups: FooterLinkGroup[] = [
   {
     title: "Soluções",
     links: [
-      { label: "Sistemas SaaS", href: "/#solucoes" },
-      { label: "Aplicações Web", href: "/#solucoes" },
-      { label: "Automação de Processos", href: "/#solucoes" },
-      { label: "Integrações", href: "/#solucoes" },
-      { label: "IA aplicada a negócios", href: "/#solucoes" },
-      { label: "Consultoria e Arquitetura", href: "/#solucoes" },
+      { label: "Sistemas SaaS", href: "/solucoes#saas" },
+      { label: "Aplicações Web", href: "/solucoes#aplicacoes-web" },
+      { label: "Automação de Processos", href: "/solucoes#automacao" },
+      { label: "Integrações", href: "/solucoes#integracoes" },
+      { label: "IA aplicada a negócios", href: "/solucoes#ia" },
+      { label: "Consultoria e Arquitetura", href: "/solucoes#consultoria" },
     ],
   },
   {

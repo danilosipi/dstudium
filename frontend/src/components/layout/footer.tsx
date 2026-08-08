@@ -20,11 +20,20 @@ function FooterNavLink({ link }: { link: FooterLink }) {
     );
   }
 
+  const className =
+    "text-sm text-[#A8B3D1] transition-colors duration-200 hover:text-[#F5F7FF] focus-visible:outline-offset-2";
+
+  // Hash links use native anchors so same-route deep links scroll reliably.
+  if (link.href.includes("#")) {
+    return (
+      <a href={link.href} className={className}>
+        {link.label}
+      </a>
+    );
+  }
+
   return (
-    <Link
-      href={link.href}
-      className="text-sm text-[#A8B3D1] transition-colors duration-200 hover:text-[#F5F7FF] focus-visible:outline-offset-2"
-    >
+    <Link href={link.href} className={className}>
       {link.label}
     </Link>
   );
