@@ -428,11 +428,7 @@ export type PortfolioFilterId =
   | "own"
   | "clients";
 
-export type PortfolioSectionId =
-  | "products"
-  | "ai-automation"
-  | "own"
-  | "clients";
+export type PortfolioSectionId = "products" | "ai-automation" | "own";
 
 export const PORTFOLIO_FILTERS: {
   id: PortfolioFilterId;
@@ -445,12 +441,12 @@ export const PORTFOLIO_FILTERS: {
   { id: "clients", label: "Clientes" },
 ];
 
+/** Seções de produtos/projetos. Clientes usam `client-cases.ts`. */
 export const PORTFOLIO_SECTIONS: {
   id: PortfolioSectionId;
   label: string;
-  filterId: Exclude<PortfolioFilterId, "all">;
+  filterId: Exclude<PortfolioFilterId, "all" | "clients">;
   categories: ProjectCategory[];
-  emptyMessage?: string;
 }[] = [
   {
     id: "products",
@@ -470,14 +466,6 @@ export const PORTFOLIO_SECTIONS: {
     filterId: "own",
     categories: ["institutional", "own-project"],
   },
-  {
-    id: "clients",
-    label: "Clientes",
-    filterId: "clients",
-    categories: ["case"],
-    emptyMessage:
-      "Cases de clientes em preparação. A publicação aguarda validação e autorização.",
-  },
 ];
 
 function matchesPortfolioFilter(
@@ -485,6 +473,7 @@ function matchesPortfolioFilter(
   filterId: PortfolioFilterId,
 ): boolean {
   if (filterId === "all") return true;
+  if (filterId === "clients") return false;
   const section = PORTFOLIO_SECTIONS.find((item) => item.filterId === filterId);
   return section ? section.categories.includes(project.category) : false;
 }
@@ -515,8 +504,9 @@ export function getPortfolioSections(
   id: PortfolioSectionId;
   label: string;
   projects: Project[];
-  emptyMessage?: string;
 }[] {
+  if (filterId === "clients") return [];
+
   const sections =
     filterId === "all"
       ? PORTFOLIO_SECTIONS
@@ -528,6 +518,5 @@ export function getPortfolioSections(
     projects: getAllProjects().filter((project) =>
       section.categories.includes(project.category),
     ),
-    emptyMessage: section.emptyMessage,
   }));
 }

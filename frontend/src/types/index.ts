@@ -178,3 +178,22 @@ export type FooterLinkGroup = {
   title: string;
   links: FooterLink[];
 };
+
+/** Relacionamento comercial com o cliente — independente de ProjectStatus. */
+export type ClientRelationship = "active" | "completed";
+
+/**
+ * Case de cliente / trabalho realizado.
+ * Mantido separado de `Project` para não exigir arquitetura, stack, IA ou preview.
+ */
+export type ClientCase = {
+  id: string;
+  name: string;
+  description: string;
+  relationship: ClientRelationship;
+  services: string[];
+  order?: number;
+  website?: string;
+  /** Reservado para case detalhado futuro (sem rota nesta etapa). */
+  futureDetail?: boolean;
+};

@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 import { Container } from "@/components/layout/container";
+import { ClientCaseCard } from "@/components/ui/client-case-card";
 import { ProjectCard } from "@/components/ui/project-card";
+import {
+  getActiveClientCases,
+  getCompletedClientCases,
+} from "@/data/client-cases";
 import {
   getPortfolioSections,
   PORTFOLIO_FILTERS,
@@ -18,12 +23,103 @@ const CAPABILITIES = [
   "Arquitetura",
 ] as const;
 
+function ClientsFullView() {
+  const activeClients = getActiveClientCases();
+  const completedClients = getCompletedClientCases();
+
+  return (
+    <div className="space-y-10 sm:space-y-12">
+      <div>
+        <h3 className="mb-2 text-xs font-semibold tracking-[0.16em] text-text-secondary uppercase">
+          Clientes ativos
+        </h3>
+        <p className="mb-4 max-w-2xl text-[13px] leading-relaxed text-text-secondary sm:mb-5">
+          Relacionamentos em andamento com atuação contínua da DSTUDIUM.
+        </p>
+        <div className="grid grid-cols-1 items-stretch gap-3.5 md:grid-cols-2">
+          {activeClients.map((clientCase) => (
+            <ClientCaseCard
+              key={clientCase.id}
+              clientCase={clientCase}
+              variant="active"
+            />
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h3 className="mb-2 text-xs font-semibold tracking-[0.16em] text-text-secondary uppercase">
+          Trabalhos realizados
+        </h3>
+        <p className="mb-4 max-w-2xl text-[13px] leading-relaxed text-text-secondary sm:mb-5">
+          Histórico de entregas e trabalhos concluídos — sem contrato ativo.
+        </p>
+        <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+          {completedClients.map((clientCase) => (
+            <ClientCaseCard
+              key={clientCase.id}
+              clientCase={clientCase}
+              variant="compact"
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ClientsSummaryView({
+  onViewAll,
+}: {
+  onViewAll: () => void;
+}) {
+  const activeClients = getActiveClientCases();
+  const completedCount = getCompletedClientCases().length;
+
+  return (
+    <div>
+      <h3 className="mb-2 text-xs font-semibold tracking-[0.16em] text-text-secondary uppercase">
+        Clientes e trabalhos realizados
+      </h3>
+      <p className="mb-4 max-w-2xl text-[13px] leading-relaxed text-text-secondary sm:mb-5">
+        Clientes ativos em destaque. O histórico completo de trabalhos
+        realizados está disponível no filtro Clientes.
+      </p>
+
+      <div className="grid grid-cols-1 items-stretch gap-3.5 md:grid-cols-2">
+        {activeClients.map((clientCase) => (
+          <ClientCaseCard
+            key={clientCase.id}
+            clientCase={clientCase}
+            variant="active"
+          />
+        ))}
+      </div>
+
+      <div className="mt-5 flex flex-col gap-3 rounded-lg border border-[#24315F]/80 bg-surface/20 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-[13px] leading-relaxed text-text-secondary">
+          + {completedCount} trabalhos realizados no histórico da DSTUDIUM.
+        </p>
+        <button
+          type="button"
+          onClick={onViewAll}
+          className="inline-flex shrink-0 items-center justify-center rounded-md border border-blue-accent/50 bg-blue-accent/10 px-3 py-2 text-[11px] font-semibold tracking-wide text-text-primary transition-colors hover:border-blue-accent hover:bg-blue-accent/20 focus-visible:outline-offset-2"
+        >
+          Ver clientes e histórico
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export function ProjectsPortfolio() {
   const [filter, setFilter] = useState<PortfolioFilterId>("all");
   const sections = getPortfolioSections(filter);
   const visibleSections = sections.filter(
-    (section) => section.projects.length > 0 || Boolean(section.emptyMessage),
+    (section) => section.projects.length > 0,
   );
+  const showClientsSummary = filter === "all";
+  const showClientsFull = filter === "clients";
 
   return (
     <>
@@ -105,29 +201,31 @@ export function ProjectsPortfolio() {
             </div>
           </div>
 
-          <div className="space-y-10 sm:space-y-12">
-            {visibleSections.map((section) => (
-              <div key={section.id}>
-                {filter === "all" || visibleSections.length > 1 ? (
-                  <h3 className="mb-4 text-xs font-semibold tracking-[0.16em] text-text-secondary uppercase sm:mb-5">
-                    {section.label}
-                  </h3>
-                ) : null}
+          {showClientsFull ? (
+            <ClientsFullView />
+          ) : (
+            <div className="space-y-10 sm:space-y-12">
+              {visibleSections.map((section) => (
+                <div key={section.id}>
+                  {filter === "all" || visibleSections.length > 1 ? (
+                    <h3 className="mb-4 text-xs font-semibold tracking-[0.16em] text-text-secondary uppercase sm:mb-5">
+                      {section.label}
+                    </h3>
+                  ) : null}
 
-                {section.projects.length > 0 ? (
                   <div className="grid grid-cols-1 items-stretch gap-3.5 md:grid-cols-2 lg:grid-cols-3">
                     {section.projects.map((project) => (
                       <ProjectCard key={project.id} project={project} />
                     ))}
                   </div>
-                ) : section.emptyMessage ? (
-                  <p className="max-w-xl rounded-lg border border-dashed border-[#24315F] bg-surface/20 px-4 py-5 text-[13px] leading-relaxed text-text-secondary">
-                    {section.emptyMessage}
-                  </p>
-                ) : null}
-              </div>
-            ))}
-          </div>
+                </div>
+              ))}
+
+              {showClientsSummary ? (
+                <ClientsSummaryView onViewAll={() => setFilter("clients")} />
+              ) : null}
+            </div>
+          )}
         </Container>
       </section>
 

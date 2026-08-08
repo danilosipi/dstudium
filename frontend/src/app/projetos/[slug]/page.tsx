@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Footer } from "@/components/layout/footer";
 import { ProjectDetail } from "@/components/sections/project-detail";
 import { getAllProjects, getProjectBySlug } from "@/data/projects";
 
@@ -70,11 +69,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <>
-      <main className="flex-1">
-        <ProjectDetail project={project} />
-      </main>
-      <Footer />
-    </>
+    <main className="flex-1">
+      <ProjectDetail project={project} />
+    </main>
   );
 }

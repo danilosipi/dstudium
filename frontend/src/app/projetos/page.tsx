@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Footer } from "@/components/layout/footer";
 import { ProjectsPortfolio } from "@/components/sections/projects-portfolio";
 
 export const metadata: Metadata = {
@@ -22,11 +21,8 @@ export const metadata: Metadata = {
 
 export default function ProjetosPage() {
   return (
-    <>
-      <main className="flex-1">
-        <ProjectsPortfolio />
-      </main>
-      <Footer />
-    </>
+    <main className="flex-1">
+      <ProjectsPortfolio />
+    </main>
   );
 }
